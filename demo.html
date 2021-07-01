@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>demos</title>
-    <link rel="stylesheet" href="./plugins/b.css">
+    <link rel="stylesheet" href="./plugins/a.css">
     <style>
         .content-wrap {
             padding: 50px;
@@ -17,17 +17,16 @@
 <body>
     <div class="content-wrap">
         <button class="a-button" onclick="showToast()">
-            <span class="a-button-label">Toast 插件展示</span>
+            Toast 插件展示
         </button>
     </div>
 </body>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-<script src="./plugins/b.js"></script>
+<script src="./plugins/a.js"></script>
 <script>
     function showToast() {
         let toast = new Toast({
             title: "socket连接已断开，正在重连...",
-            durations: 0
         })
         // Toast.show("socket连接已断开，正在重连...")
     }

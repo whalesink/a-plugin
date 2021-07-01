@@ -1,7 +1,11 @@
+// new Toast({opts})
+// Toast.show(msg, {...opts})
+// Toast.success(...)
+
 class Toast {
 	constructor(opts) {
 		this.title = opts.title;
-		this.durations = opts.durations ? opts.durations : 3000;
+		this.durations = opts.durations || 2000;
 
 		this.el = document.createElement("div");
 		this.el.setAttribute("class", "a-toast");

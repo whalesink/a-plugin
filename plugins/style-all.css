@@ -17,7 +17,7 @@
 	user-select: none;
 	padding: 12px 20px;
 	font-size: 14px;
-	border-radius: 4px;
+	border-radius: 6px;
 }
 
 .a-button:hover {
@@ -31,11 +31,19 @@
 	left: 50%;
 	top: 0;
 	transform: translateX(-50%);
-	background-color: rgba(78, 78, 78, 0.637);
-	color: #fff;
+	color: #000;
 	font-size: 16px;
 	padding: 10px 15px;
-	border-radius: 30px;
+	border-radius: 4px;
+	border: 1px solid #bbb;
+	background-color: #fff;
+	box-shadow: 0 0 5px  #aaa;
+}
+
+.a-toast.dark {
+	border: none;
+	color: #fff;
+	background-color: rgba(78, 78, 78, 0.637);
 }
 
 .a-toast.show {
@@ -75,6 +83,5 @@
 }
 
 /* a-message-box */
-.a-message-box{
-	
+.a-message-box {
 }

@@ -1,0 +1,19 @@
+{
+	"name": "a",
+	"version": "0.0.1",
+	"description": "native javascript web plug-in lib",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/whalesink/a.git"
+	},
+	"author": "whalesink",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/whalesink/a/issues"
+	},
+	"homepage": "https://github.com/whalesink/a#readme"
+}

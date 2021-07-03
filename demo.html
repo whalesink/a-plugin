@@ -2,34 +2,115 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>demos</title>
-    <link rel="stylesheet" href="./plugins/a.css">
+    <link rel="stylesheet" href="./plugins/style-all.css" />
     <style>
-        .content-wrap {
-            padding: 50px;
+        .wrapper {
+            padding: 15px;
+        }
+
+        .wrapper .title {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .stage {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
     <div class="content-wrap">
-        <button class="a-button" onclick="showToast()">
-            Toast 插件展示
-        </button>
+        <!-- toast部分 -->
+        <div class="wrapper">
+            <div class="title">Toast 插件展示</div>
+            <div class="stage">
+                <button class="a-button" onclick="toastStage.plain()">
+                    普通提示
+                </button>
+
+                <button class="a-button" onclick="toastStage.success()">
+                    倾向性提示
+                </button>
+
+                <button class="a-button" onclick="toastStage.asyncClose()">
+                    异步关闭
+                </button>
+
+                <button class="a-button" onclick="toastStage.dark()">
+                    dark 主题
+                </button>
+
+                <button class="a-button" onclick="toastStage.excute()">
+                    带有关闭回调
+                </button>
+
+                <button class="a-button" onclick="toastStage.randerHTML()">
+                    渲染HTML
+                </button>
+            </div>
+        </div>
+
+        <!-- messagebox 部分 -->
+        <div class="wrapper">
+            <div class="title">Messagebox 插件展示</div>
+            <div class="stage">
+                <button class="a-button" onclick="">普通的消息弹框</button>
+            </div>
+        </div>
     </div>
 </body>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-<script src="./plugins/a.js"></script>
+<script src="./plugins/toast.js"></script>
 <script>
-    function showToast() {
-        let toast = new Toast({
-            title: "socket连接已断开，正在重连...",
-        })
-        // Toast.show("socket连接已断开，正在重连...")
-    }
+    const toastStage = {
+        plain() {
+            let toast = Toast.show("我是一个朴实无华且枯燥的toast");
+            // Toast.loading("socket连接已断开，正在重连...")
+        },
+
+        success() {
+            Toast.success("表单提交成功！");
+        },
+
+        asyncClose() {
+            let toast = new Toast({
+                title: "我需要手动去关闭哦，调用实例方法hide()",
+                type: "loading",
+            });
+
+            window.toast = toast;
+            // toast.hide();
+        },
+
+        dark() {
+            let toast = new Toast({
+                title: "我是暗黑风格的toast",
+                theme: "dark",
+            });
+        },
+
+        excute() {
+            let toast = new Toast({
+                title: "我关闭后会执行回调函数哟",
+                onHide: () => {
+                    alert("我要被从dom移除啦");
+                },
+            });
+        },
+
+        randerHTML() {
+            let toast = new Toast({
+                title: `<button class="a-button" onclick="toastStage.showMsgbox()">
+                    我是一枚按钮，我在toast组件内部
+                </button>`,
+                dangerouslyUseHTML: true,
+            });
+        },
+    };
 </script>
 
 </html>

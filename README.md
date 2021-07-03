@@ -28,8 +28,18 @@ var myToast = new Toast({
 	type: "info",
 });
 
-// 或者直接使用静态方法
+// 或者直接调用静态方法
 Toast.success("表单提交成功！");
+
+// 异步关闭
+var myToast = Toast.loading("加载中，请稍候...", {
+	theme: "light",
+	position: "middle",
+});
+
+setTimeout(() => {
+	myToast.hide();
+});
 ```
 
 -   params 属性

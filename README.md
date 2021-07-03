@@ -46,13 +46,13 @@ setTimeout(() => {
     属性| 必需| 类型 | 描述 | 默认值
     --|--|--|--|--
     `title` | true | string | 要提示的文本内容；如渲染 html，需要手动设置 `dangerouslyUseHTML` 为 `true` | -|
-    `duration` | false|number| 持续时间（ms）。若为 0 不会自动关闭； type 为`loading`时需要手动关闭| 2000|-
-    `position`| false|string | 出现的位置，可选 `top`（默认）, `middle`, `bottom`|top
+    `duration` | false|number| 持续时间（ms）。若为 0 不会自动关闭； type 为`loading`时需要手动关闭| `2000`|-
+    `position`| false|string | 出现的位置，可选 `top`（默认）, `middle`, `bottom`|`top`
     `type`|false |string| 提示的类型，可选 `success`,`error`,`info`,`warn`,`loading`, 指定`loading`类型时`duration`无效，需要手动关闭|-
-    `theme` | false|string| 主题类型,可选`light`, `dark`| dark
+    `theme` | false|string| 主题类型,可选`light`, `dark`| `dark`
     `onHide` |false|function| 关闭后执行的操作|-
-    `isSingle`|false|boolean| 指定组件是否以单例模式展示|false
-    `dangerouslyUseHTML`| false|boolean| 指定是否以危险方式将内容渲染为 HTML|false
+    `isSingle`|false|boolean| 指定组件是否以单例模式展示|`false`
+    `dangerouslyUseHTML`| false|boolean| 指定是否以危险方式将内容渲染为 HTML|`false`
 -   static methods 静态方法
     方法| 参数及类型| 描述|返回值及类型
     --|--|--|--

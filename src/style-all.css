@@ -175,7 +175,7 @@
 
 .a-message-box__headerclose:hover {
 	fill: #666;
-	transform: rotate(180deg) scale(1.2);
+	transform: rotate(-180deg) scale(1.2);
 }
 
 .a-message-box__content {

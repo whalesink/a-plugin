@@ -1,116 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>demos</title>
+		<link rel="stylesheet" href="./src/style-all.css" />
+		<style>
+			.wrapper {
+				padding: 15px;
+			}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>demos</title>
-    <link rel="stylesheet" href="./plugins/style-all.css" />
-    <style>
-        .wrapper {
-            padding: 15px;
-        }
+			.wrapper .title {
+				margin-bottom: 15px;
+				font-weight: bold;
+			}
 
-        .wrapper .title {
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+			.stage {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
 
-        .stage {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
+	<body>
+		<div class="content-wrap">
+			<!-- toast部分 -->
+			<div class="wrapper">
+				<div class="title">Toast 插件展示</div>
+				<div class="stage">
+					<button class="a-button" onclick="toastStage.plain()">
+						普通提示
+					</button>
 
-<body>
-    <div class="content-wrap">
-        <!-- toast部分 -->
-        <div class="wrapper">
-            <div class="title">Toast 插件展示</div>
-            <div class="stage">
-                <button class="a-button" onclick="toastStage.plain()">
-                    普通提示
-                </button>
+					<button class="a-button" onclick="toastStage.success()">
+						倾向性提示
+					</button>
 
-                <button class="a-button" onclick="toastStage.success()">
-                    倾向性提示
-                </button>
+					<button class="a-button" onclick="toastStage.asyncClose()">
+						异步关闭
+					</button>
 
-                <button class="a-button" onclick="toastStage.asyncClose()">
-                    异步关闭
-                </button>
+					<button class="a-button" onclick="toastStage.dark()">
+						dark 主题
+					</button>
 
-                <button class="a-button" onclick="toastStage.dark()">
-                    dark 主题
-                </button>
+					<button class="a-button" onclick="toastStage.excute()">
+						带有关闭回调
+					</button>
 
-                <button class="a-button" onclick="toastStage.excute()">
-                    带有关闭回调
-                </button>
+					<button class="a-button" onclick="toastStage.randerHTML()">
+						DOM插槽
+					</button>
+				</div>
+			</div>
 
-                <button class="a-button" onclick="toastStage.randerHTML()">
-                    渲染HTML
-                </button>
+			<!-- messagebox 部分 -->
+			<div class="wrapper">
+				<div class="title">Messagebox 插件展示</div>
+				<div class="stage">
+					<button class="a-button" onclick="msgBoxStage.plainBox()">
+						普通的消息弹框
+					</button>
+					<button class="a-button" onclick="msgBoxStage.warn()">
+						倾向性
+					</button>
+					<button class="a-button" onclick="msgBoxStage.callback()">
+						动作回调
+					</button>
+					<button class="a-button" onclick="msgBoxStage.excute()">
+						异步关闭
+					</button>
+					<button class="a-button" onclick="msgBoxStage.html()">
+						DOM插槽
+					</button>
+
+					<button class="a-button" onclick="msgBoxStage.banEsc()">
+						不可通过Esc或点击mask关闭
+					</button>
+				</div>
+			</div>
+
+			<!-- <div class="a-message-box__wrapper fadeIn">
+            <div class="a-message-box scaleIn">
+                <div class="a-message-box__header">
+                    <div class="a-message-box__title">
+                        <span class="a-message-box__titleicon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                class="a-message-box__titleicon info">
+                                <path
+                                    d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" />
+                            </svg>
+                        </span>
+                        <span class="a-message-box__titletext">提示</span>
+                    </div>
+                    <button class="a-message-box__headerbtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"
+                            class="a-message-box__headerclose">
+                            <path
+                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="a-message-box__content">
+                    <div class="a-message-box__container">删除数据后不可恢复，确定吗？</div>
+                </div>
+                <div class="a-message-box__footer">
+                    <button class="a-message-box__btns cancel">取消</button>
+                    <button class="a-message-box__btns confirm">确定</button>
+                </div>
             </div>
-        </div>
+        </div> -->
+		</div>
+	</body>
+	<script src="./src/toast.js"></script>
+	<script src="./src/message-box.js"></script>
+	<script>
+		const toastStage = {
+			plain() {
+				let toast = Toast.show("我是一个朴实无华且枯燥的toast");
+				// Toast.loading("socket连接已断开，正在重连...")
+			},
 
-        <!-- messagebox 部分 -->
-        <div class="wrapper">
-            <div class="title">Messagebox 插件展示</div>
-            <div class="stage">
-                <button class="a-button" onclick="">普通的消息弹框</button>
-            </div>
-        </div>
-    </div>
-</body>
-<script src="./plugins/toast.js"></script>
-<script>
-    const toastStage = {
-        plain() {
-            let toast = Toast.show("我是一个朴实无华且枯燥的toast");
-            // Toast.loading("socket连接已断开，正在重连...")
-        },
+			success() {
+				Toast.success("表单提交成功！");
+			},
 
-        success() {
-            Toast.success("表单提交成功！");
-        },
+			asyncClose() {
+				let toast = new Toast({
+					title: "我需要手动去关闭哦，调用实例方法hide()",
+					type: "loading",
+				});
 
-        asyncClose() {
-            let toast = new Toast({
-                title: "我需要手动去关闭哦，调用实例方法hide()",
-                type: "loading",
-            });
+				setTimeout(() => {
+					// toast.hide();
+				});
+			},
 
-            window.toast = toast;
-            // toast.hide();
-        },
+			dark() {
+				let toast = new Toast({
+					title: "我是暗黑风格的toast",
+					theme: "dark",
+				});
+			},
 
-        dark() {
-            let toast = new Toast({
-                title: "我是暗黑风格的toast",
-                theme: "dark",
-            });
-        },
+			excute() {
+				let toast = new Toast({
+					title: "我关闭后会执行回调函数哟",
+					onHide: () => {
+						alert("我要被从dom移除啦");
+					},
+				});
+			},
 
-        excute() {
-            let toast = new Toast({
-                title: "我关闭后会执行回调函数哟",
-                onHide: () => {
-                    alert("我要被从dom移除啦");
-                },
-            });
-        },
-
-        randerHTML() {
-            let toast = new Toast({
-                title: `<button class="a-button" onclick="toastStage.showMsgbox()">
+			randerHTML() {
+				let toast = new Toast({
+					title: `<button class="a-button" onclick="toastStage.showMsgbox()">
                     我是一枚按钮，我在toast组件内部
                 </button>`,
-                dangerouslyUseHTML: true,
-            });
-        },
-    };
-</script>
+					dangerouslyUseHTML: true,
+					theme: "dark",
+				});
+			},
+		};
 
+		const msgBoxStage = {
+			plainBox() {
+				new MessageBox({
+					message: "我是一个消息提示框",
+				});
+			},
+
+			warn() {
+				MessageBox.warn("删除数据后不可恢复，确定吗？");
+			},
+
+			callback() {
+				let mb = new MessageBox({
+					message: "点击按钮试试看",
+					confirmBtnText: "好嘞 👌",
+					cancelBtnText: "v(ノ｀Д)ノ",
+					onConfirm() {
+						Toast.show("点击了确认");
+						mb.close();
+					},
+					onCancel() {
+						Toast.show("点击了取消");
+						mb.close();
+					},
+				});
+			},
+
+			excute() {
+				let mb = new MessageBox({
+					type: "error",
+					title: "操作未被允许",
+					message: "三秒后我会被异步关闭",
+					showClose: false,
+				});
+
+				setTimeout(() => {
+					mb && mb.close();
+				}, 3000);
+			},
+
+			html() {
+				let mb = new MessageBox({
+					message: `<input type="text" placeholder="我一个输入框 竟然在弹框里">`,
+					dangerouslyUseHTML: true,
+				});
+			},
+
+			banEsc() {
+				let mb = new MessageBox({
+					type: "success",
+					title: "借我点钱？",
+					message: `我禁用了Esc/右上角x/Mask关闭，你必须明确回应我，到底中不中？`,
+					showClose: false,
+					closeOnPressEscape: false,
+					closeOnClickMask: false,
+				});
+			},
+		};
+	</script>
 </html>

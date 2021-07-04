@@ -1,23 +1,13 @@
-// 调用方式
-// 1.构造函数 new Toast({opts})
-// 2.静态方法,返回当前实例
-// Toast.show(msg, {...opts})
-// Toast.success(msg, {...opts})
-// Toast.loading(msg, {...opts})
-
 /**
- * params 属性
- * title[required]: {string} 要提示的文本内容；如渲染html，需要手动设置dangerouslyUseHTML为true
- * duration: {number} 持续时间，默认2s;若为 0 不会自动关闭； type为loading时需要手动关闭
- * position: {string} 出现的位置，可选top（默认）, middle, bottom
- * type: {string} 提示的图标类型，可选success，error，info，warn，loading；默认 none 无图标
- * theme: {string} 主题类型,可选'light', 'dark'
- * onHide: {function} 关闭后执行的操作
- * isSingle: {boolean} 指定组件是否以单一实例展示
- * dangerouslyUseHTML: {boolean} 指定是否以危险方式将内容渲染为HTML
- *
- * methods 方法
- * hide: {void} 手动隐藏toast
+ * @constructor
+ * @param {string} title[required]: 要提示的文本内容；如渲染html，需要手动设置dangerouslyUseHTML为true
+ * @param {number} duration:  持续时间，默认2s;若为 0 不会自动关闭； type为loading时需要手动关闭
+ * @param {string} position:  出现的位置，可选top（默认）, middle, bottom
+ * @param {string} type:  提示的图标类型，可选success，error，info，warn，loading；默认 none 无图标
+ * @param {string} theme:  主题类型,可选'light', 'dark'
+ * @param {function} onHide:  关闭后执行的操作
+ * @param {boolean} isSingle:  指定组件是否以单一实例展示
+ * @param {boolean} dangerouslyUseHTML:  指定是否以危险方式将内容渲染为HTML
  */
 
 class Toast {

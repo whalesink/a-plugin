@@ -40,8 +40,8 @@
 						异步关闭
 					</button>
 
-					<button class="a-button" onclick="toastStage.dark()">
-						dark 主题
+					<button class="a-button" onclick="toastStage.light()">
+						light 主题
 					</button>
 
 					<button class="a-button" onclick="toastStage.excute()">
@@ -79,6 +79,29 @@
 					</button>
 				</div>
 			</div>
+
+			<!-- <div class="a-toast">
+				<span class="a-toast__iconwrap">
+					<svg
+						viewBox="0 0 1024 1024"
+						version="1.1"
+						class="a-toast__icon loading"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M512 85.333333c235.648 0 426.666667 191.018667 426.666667 426.666667s-191.018667 426.666667-426.666667 426.666667S85.333333 747.648 85.333333 512 276.352 85.333333 512 85.333333z m0 128a298.666667 298.666667 0 1 0 0 597.333334 298.666667 298.666667 0 0 0 0-597.333334z"
+							fill-opacity=".2"
+							fill="#000"
+						/>
+						<path
+							d="M813.696 813.696c166.613333-166.613333 166.613333-436.778667 0-603.392-166.613333-166.613333-436.778667-166.613333-603.392 0A64 64 0 0 0 300.8 300.8a298.666667 298.666667 0 1 1 422.4 422.4 64 64 0 0 0 90.496 90.496z"
+							fill="#000"
+	
+						/>
+					</svg>
+				</span>
+				<span class="a-toast__inner">socket连接已断开，正在重连</span>
+			</div> -->
 		</div>
 	</body>
 	<script src="./src/toast.js"></script>
@@ -95,20 +118,27 @@
 			},
 
 			asyncClose() {
+				let t = 5;
 				let toast = new Toast({
-					title: "我需要手动去关闭哦，调用实例方法hide()",
+					title: "我5秒后加载完成(假装)",
 					type: "loading",
 				});
 
-				setTimeout(() => {
-					// toast.hide();
-				});
+				let timer = setInterval(() => {
+					t--;
+					toast.title = `${t}秒后加载完成`;
+					if (t <= 0) {
+						clearInterval(timer);
+					}
+				}, 1000);
+
+				setTimeout(() => toast.hide(), 5000);
 			},
 
-			dark() {
+			light() {
 				let toast = new Toast({
-					title: "我是暗黑风格的toast",
-					theme: "dark",
+					title: "我是亮色主题的toast",
+					theme: "light",
 				});
 			},
 
@@ -124,8 +154,8 @@
 			randerHTML() {
 				let toast = new Toast({
 					title: `<button class="a-button" onclick="toastStage.showMsgbox()">
-                    我是一枚按钮，我在toast组件内部
-                </button>`,
+		                  我是一枚按钮，我在toast组件内部
+		              </button>`,
 					dangerouslyUseHTML: true,
 					theme: "dark",
 				});

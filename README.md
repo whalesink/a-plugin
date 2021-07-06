@@ -89,9 +89,10 @@ let mb = new MessageBox({
 });
 
 // 调用静态方法
-Toast.success("保存成功！是否返回上一页？", {
-	confirmBtnText: "好的",
-	cancelBtnText: "不了不了",
+MessageBox.warn("删除数据后不可恢复，确定吗？", {
+	onCancel() {
+		console.log("点击了取消");
+	},
 });
 ```
 

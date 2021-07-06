@@ -1,6 +1,6 @@
 /**
  * @constructor
- * @param {string} title:  提示框标题，默认 ‘警告’
+ * @param {string} title:  提示框标题
  * @param {string} message[required]:  提示框消息正文，可以是HTML
  * @param {string} type:  提示框类型，用于渲染图标 success info error warn
  * @param {string} cancelBtnText: 取消按钮的文案
@@ -15,8 +15,6 @@
  * @param {boolean} showClose: 是否展示右上角close图标 true
  * @param {boolean} closeOnClickMask: 是否可通过点击遮罩关闭弹窗 false
  * @param {boolean} closeOnPressEscape: 是否可通过按下Esc关闭弹窗 true
- *
- * 待实现的功能
  * @param {boolean} showConfirmBtn: 是否显示确认按钮
  * @param {boolean} showCancelBtn: 是否显示取消按钮
  *
@@ -42,6 +40,8 @@ class MessageBox {
 		this.showClose = opts.showClose ?? true;
 		this.closeOnClickMask = opts.closeOnClickMask ?? false;
 		this.closeOnPressEscape = opts.closeOnPressEscape ?? true;
+		this.showConfirmBtn = opts.showConfirmBtn ?? true;
+		this.showCancelBtn = opts.showCancelBtn ?? true;
 
 		this.init();
 	}
@@ -142,25 +142,33 @@ class MessageBox {
 			? (contentInner.innerHTML = this.message)
 			: (contentInner.innerText = this.message);
 
-		let cancelBtn = document.createElement("button");
-		cancelBtn.className = "a-message-box__btns cancel";
-		cancelBtn.innerText = this.cancelBtnText;
-		cancelBtn.onclick = this.onCancel;
+		let footer;
+		if (this.showConfirmBtn || this.showCancelBtn) {
+			footer = document.createElement("div");
+			footer.className = "a-message-box__footer";
 
-		let confirmBtn = document.createElement("button");
-		confirmBtn.className = "a-message-box__btns confirm";
-		confirmBtn.innerText = this.confirmBtnText;
-		confirmBtn.onclick = this.onConfirm;
+			if (this.showCancelBtn) {
+				let cancelBtn = document.createElement("button");
+				cancelBtn.className =
+					"a-message-box__btns cancel " + this.cancelBtnClass;
+				cancelBtn.innerText = this.cancelBtnText;
+				cancelBtn.onclick = this.onCancel;
+				footer.appendChild(cancelBtn);
+			}
 
-		let footer = document.createElement("div");
-		footer.className = "a-message-box__footer";
-
-		footer.appendChild(cancelBtn);
-		footer.appendChild(confirmBtn);
+			if (this.showConfirmBtn) {
+				let confirmBtn = document.createElement("button");
+				confirmBtn.className =
+					"a-message-box__btns confirm " + this.confirmBtnClass;
+				confirmBtn.innerText = this.confirmBtnText;
+				confirmBtn.onclick = this.onConfirm;
+				footer.appendChild(confirmBtn);
+			}
+		}
 
 		this.elInner.appendChild(header);
 		this.elInner.appendChild(content);
-		this.elInner.appendChild(footer);
+		footer && this.elInner.appendChild(footer);
 		this.el.appendChild(elInner);
 		document.body.appendChild(el);
 	}

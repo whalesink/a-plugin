@@ -1,7 +1,7 @@
-## Introductions
+## Introduction
 
 `a-plugin`是一个不依赖任何库就可以在你的 web 项目中使用的**原生 js 插件库**。
-旨在帮助那些由于种种原因，仍然在维护未使用三大框架的项目的工程师们快速构建UI。
+旨在帮助那些仍在维护老旧项目，又不想在项目中引入侵入性改动的工程师们快速构建 UI。
 
 ## Install
 
@@ -49,12 +49,11 @@ setTimeout(() => {
     --|--|--|--|--
     `title` | true | string | 要提示的文本内容；如渲染 html，需要手动设置 `dangerouslyUseHTML` 为 `true` | -|
     `duration` | false|number| 持续时间（ms）。若为 0 不会自动关闭； type 为`loading`时需要手动关闭| `2000`|-
-    `position`| false|string | 出现的位置，可选 `top`（默认）, `middle`, `bottom`|`top`
     `type`|false |string| 提示的类型，可选 `success`,`error`,`info`,`warn`,`loading`, 指定`loading`类型时`duration`无效，需要手动关闭|-
     `theme` | false|string| 主题类型,可选`light`, `dark`| `dark`
     `onHide` |false|function| 关闭后执行的操作|-
-    `isSingle`|false|boolean| 指定组件是否以单例模式展示|`false`
     `dangerouslyUseHTML`| false|boolean| 指定是否以危险方式将内容渲染为 HTML|`false`
+    ~~`isSingle`~~ | ~~false~~ | ~~boolean~~| ~~指定组件是否以单例模式展示~~|~~`false`~~ |
 -   static methods 静态方法
     方法| 参数及类型| 描述|返回值及类型
     --|--|--|--
@@ -114,6 +113,8 @@ Toast.success("保存成功！是否返回上一页？", {
     `showClose` | false |boolean | 是否展示右上角 close 图标 | `true`
     `closeOnClickMask` | false |boolean | 是否可通过点击遮罩关闭弹窗 |`false`
     `closeOnPressEscape` | false |boolean | 是否可通过按下 Esc 关闭弹窗 |`true`
+    `showConfirmBtn` | false | boolean | 是否显示确认按钮 | `true`
+    `showCancelBtn` | false | boolean | 是否显示取消按钮 | `true`
 
 -   static methods 静态方法
     方法| 参数及类型| 描述|返回值及类型
@@ -121,7 +122,7 @@ Toast.success("保存成功！是否返回上一页？", {
     `success`| `title: string, args: object` | 展示成功类型的提示框 | `object`，当前实例对象
     `error`| `title: string, args: object` | 展示错误类型的提示框 | `object`，当前实例对象
     `info`| `title: string, args: object` | 展示信息类型的提示框 | `object`，当前实例对象
-    `warn`| `title: string, args: object` | 展示警告类型的提示框| `object`，当前实例对象
+    `warn`| `title: string, args: object` | 展示警告类型的提示框 | `object`，当前实例对象
 
 -   methods 实例方法
     方法| 参数及类型| 描述|返回值及类型

@@ -2,13 +2,15 @@
  * @constructor
  * @param {string} title[required]: 要提示的文本内容；如渲染html，需要手动设置dangerouslyUseHTML为true
  * @param {number} duration:  持续时间，默认2s;若为 0 不会自动关闭； type为loading时需要手动关闭
- * @param {string} position:  出现的位置，可选top（默认）, middle, bottom
  * @param {string} type:  提示的图标类型，可选success，error，info，warn，loading；默认无图标
  * @param {string} theme:  主题类型,可选'light', 'dark'
  * @param {function} onHide:  关闭后执行的操作
- * @param {boolean} isSingle:  指定组件是否以单一实例展示
  * @param {boolean} dangerouslyUseHTML:  指定是否以危险方式将内容渲染为HTML
  * @param {string} iconClass: 自定义图标的类名, 将覆盖type的图标
+ * 
+ * 待实现的API
+ * @param {boolean} isSingle:  指定组件是否以单一实例展示
+ * @param {string} position:  出现的位置，可选top（默认）, middle, bottom
  */
 
 class Toast {
@@ -33,7 +35,8 @@ class Toast {
 		this.el = document.createElement("div");
 		this.el.className = "a-toast";
 
-		let icon = "";
+		let icon = "",
+			iconwrap = "";
 		if (this.iconClass) {
 			icon = `<i class="${this.iconClass}"></i>`;
 		} else {
@@ -75,7 +78,9 @@ class Toast {
 			}
 		}
 
-		let iconwrap = `<span class="a-toast__iconwrap">${icon}</span>`;
+		if (icon) {
+			iconwrap = `<span class="a-toast__iconwrap">${icon}</span>`;
+		}
 
 		let content = document.createElement("span");
 		content.className = "a-toast__inner";

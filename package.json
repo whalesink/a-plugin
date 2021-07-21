@@ -9,12 +9,16 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/whalesink/a.git"
+		"url": "git+https://github.com/whalesink/a-plugin.git"
 	},
 	"author": "whalesink",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/whalesink/a/issues"
+		"url": "https://github.com/whalesink/a-plugin/issues"
 	},
-	"homepage": "https://github.com/whalesink/a#readme"
+	"homepage": "https://github.com/whalesink/a-plugin#readme",
+	"devDependencies": {
+		"webpack": "^5.45.1",
+		"webpack-cli": "^4.7.2"
+	}
 }

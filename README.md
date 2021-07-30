@@ -36,12 +36,11 @@ Toast.success("表单提交成功！");
 // 异步关闭
 var myToast = Toast.loading("加载中，请稍候...", {
 	theme: "light",
-	position: "middle",
 });
 
 setTimeout(() => {
 	myToast.hide();
-});
+}, 5000);
 ```
 
 -   params 属性
@@ -57,6 +56,7 @@ setTimeout(() => {
 -   static methods 静态方法
     方法| 参数及类型| 描述|返回值及类型
     --|--|--|--
+    `show`| `title: string, args: object` | 展示一条无图标的文本提示 | `object`，当前实例对象
     `success`| `title: string, args: object` | 展示一条成功类型的提示 | `object`，当前实例对象
     `error`| `title: string, args: object` | 展示一条错误类型的提示 | `object`，当前实例对象
     `info`| `title: string, args: object` | 展示一条信息类型的提示 | `object`，当前实例对象

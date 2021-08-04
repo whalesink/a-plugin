@@ -21,6 +21,7 @@
  * @function
  * close 手动关闭当前弹框
  */
+import "./index.scss";
 
 class MessageBox {
 	constructor(opts) {
@@ -228,3 +229,5 @@ class MessageBox {
 			.children[0];
 	}
 }
+
+export default MessageBox;

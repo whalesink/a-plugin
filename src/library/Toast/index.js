@@ -7,11 +7,12 @@
  * @param {function} onHide:  关闭后执行的操作
  * @param {boolean} dangerouslyUseHTML:  指定是否以危险方式将内容渲染为HTML
  * @param {string} iconClass: 自定义图标的类名, 将覆盖type的图标
- * 
+ *
  * 待实现的API
  * @param {boolean} isSingle:  指定组件是否以单一实例展示
  * @param {string} position:  出现的位置，可选top（默认）, middle, bottom
  */
+import "./index.scss";
 
 class Toast {
 	constructor(opts) {
@@ -156,3 +157,5 @@ class Toast {
 		return new this({ title, type: "loading", ...args });
 	}
 }
+
+export default Toast;

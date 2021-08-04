@@ -1,0 +1,90 @@
+.a-toast {
+	position: fixed;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+	font-size: 14px;
+	padding: 10px 15px;
+	border-radius: 4px;
+	box-shadow: 0 0 5px #c9c9c9;
+	z-index: 9999;
+	border: none;
+	color: #fff;
+	background-color: #8a8a8a;
+
+	&.light {
+		color: #000;
+		border: 1px solid #bbb;
+		background-color: #fff;
+	}
+}
+
+.a-toast__iconwrap {
+	margin-right: 6px;
+}
+.a-toast__icon {
+	width: 20px;
+	fill: #777;
+	vertical-align: bottom;
+
+	&.success {
+		fill: #13b945;
+	}
+	&.info {
+		fill: #777;
+	}
+	&.warn {
+		fill: #e9bd2d;
+	}
+	&.error {
+		fill: #ff6666;
+	}
+	&.loading {
+		animation: loading 0.8s linear infinite;
+	}
+}
+
+.fadeMoveIn {
+	animation-name: fadeMoveIn;
+	animation-duration: 300ms;
+	animation-fill-mode: forwards;
+}
+
+.fadeMoveOut {
+	animation-name: fadeMoveOut;
+	animation-duration: 300ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeMoveIn {
+	0% {
+		transform: translateX(-50%) translateY(0px);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX(-50%) translateY(40px);
+		opacity: 1;
+	}
+}
+
+@keyframes fadeMoveOut {
+	0% {
+		transform: translateX(-50%) translateY(40px);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateX(-50%) translateY(0px);
+		opacity: 0;
+	}
+}
+
+@keyframes loading {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

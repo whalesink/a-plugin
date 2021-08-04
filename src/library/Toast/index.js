@@ -12,6 +12,7 @@
  * @param {boolean} isSingle:  指定组件是否以单一实例展示
  * @param {string} position:  出现的位置，可选top（默认）, middle, bottom
  */
+import "./index.scss";
 
 class Toast {
 	constructor(opts) {
@@ -156,3 +157,5 @@ class Toast {
 		return new this({ title, type: "loading", ...args });
 	}
 }
+
+export default Toast;

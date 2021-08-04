@@ -5,7 +5,7 @@ const cssnano = require("cssnano");
 module.exports = {
 	mode: "production",
 	entry: {
-		lib: "./src/main.js",
+		"a-plugin": "./src/main.js",
 	},
 	output: {
 		filename: "[name].min.js",
@@ -30,7 +30,6 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				// use: ["css-loader", "sass-loader"],
 				use: [
 					"style-loader",
 					{
@@ -42,12 +41,23 @@ module.exports = {
 					{
 						loader: "postcss-loader",
 						options: {
-							plugins: [autoprefixer, cssnano],
+							postcssOptions: {
+								plugins: [autoprefixer, cssnano],
+							},
 						},
 					},
 					"sass-loader",
 				],
 			},
+			{
+				test: /\.svg$/,
+				loader: "svg-inline-loader",
+			},
+			{
+				test: /\.art$/,
+				loader: "art-template-loader",
+			},
 		],
 	},
+	plugins: [],
 };

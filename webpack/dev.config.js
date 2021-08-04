@@ -8,7 +8,7 @@ module.exports = {
 		lib: "./src/main.js",
 	},
 	output: {
-		filename: "[name].[hash4].min.js",
+		filename: "[name].[hash:4].min.js",
 		path: path.resolve(__dirname, "../temp"),
 		clean: true,
 	},
@@ -30,7 +30,6 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				// use: ["css-loader", "sass-loader"],
 				use: [
 					"style-loader",
 					{
@@ -42,12 +41,26 @@ module.exports = {
 					{
 						loader: "postcss-loader",
 						options: {
-							plugins: [autoprefixer, cssnano],
+							postcssOptions: {
+								plugins: [autoprefixer, cssnano],
+							},
 						},
 					},
 					"sass-loader",
 				],
+				exclude: /node_modules/,
+			},
+			{
+				test: /\.svg$/,
+				loader: "svg-inline-loader",
+				exclude: /node_modules/,
+			},
+			{
+				test: /\.art$/,
+				loader: "art-template-loader",
+				exclude: /node_modules/,
 			},
 		],
 	},
+	plugins: [],
 };

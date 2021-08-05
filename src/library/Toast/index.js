@@ -158,5 +158,4 @@ class Toast {
 	}
 }
 
-window.Toast = Toast;
 export default Toast;

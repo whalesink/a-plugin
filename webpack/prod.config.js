@@ -5,18 +5,28 @@ const cssnano = require("cssnano");
 
 module.exports = {
 	mode: "production",
+	devtool: "source-map",
 	entry: {
 		"a-plugin": "./src/main.js",
 	},
 	output: {
 		filename: "[name].min.js",
 		path: path.resolve(__dirname, "../dist"),
-		clean: true,
 		environment: {
 			arrowFunction: false,
 		},
+		library: {
+			type: "window",
+		},
+		clean: true,
 	},
-
+	resolve: {
+		alias: {
+			"@": path.resolve(__dirname, "../src/"),
+			"@assets": path.resolve(__dirname, "../assets/"),
+			"@common": path.resolve(__dirname, "../src/library/common/"),
+		},
+	},
 	module: {
 		strictExportPresence: true,
 		rules: [
@@ -27,7 +37,7 @@ module.exports = {
 					loader: "babel-loader",
 					options: {
 						// cacheDirectory: true,
-						presets: [["@babel/preset-env"]],
+						presets: ["@babel/preset-env"],
 					},
 				},
 			},

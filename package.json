@@ -25,7 +25,6 @@
 		"art-template-loader": "^1.4.3",
 		"autoprefixer": "^10.3.1",
 		"babel-loader": "^8.2.2",
-		"cross-env": "^7.0.3",
 		"css-loader": "^6.2.0",
 		"cssnano": "^5.0.7",
 		"mini-css-extract-plugin": "^2.2.0",

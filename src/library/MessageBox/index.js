@@ -230,4 +230,5 @@ class MessageBox {
 	}
 }
 
+window.MessageBox = MessageBox;
 export default MessageBox;

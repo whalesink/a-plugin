@@ -1,6 +1,7 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	mode: "production",
@@ -11,25 +12,28 @@ module.exports = {
 		filename: "[name].min.js",
 		path: path.resolve(__dirname, "../dist"),
 		clean: true,
+		environment: {
+			arrowFunction: false,
+		},
 	},
 
 	module: {
+		strictExportPresence: true,
 		rules: [
 			{
 				test: /\.js$/,
-				use: [
-					{
-						loader: "babel-loader",
-						options: {
-							// cacheDirectory: true,
-							presets: ["@babel/preset-env"],
-						},
-					},
-				],
 				exclude: /node_modules/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						// cacheDirectory: true,
+						presets: [["@babel/preset-env"]],
+					},
+				},
 			},
 			{
 				test: /\.scss$/,
+				exclude: /node_modules/,
 				use: [
 					"style-loader",
 					{
@@ -51,10 +55,12 @@ module.exports = {
 			},
 			{
 				test: /\.svg$/,
+				exclude: /node_modules/,
 				loader: "svg-inline-loader",
 			},
 			{
 				test: /\.art$/,
+				exclude: /node_modules/,
 				loader: "art-template-loader",
 			},
 		],

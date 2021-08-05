@@ -17,6 +17,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: "babel-loader",
@@ -26,10 +27,10 @@ module.exports = {
 						},
 					},
 				],
-				exclude: /node_modules/,
 			},
 			{
 				test: /\.scss$/,
+				exclude: /node_modules/,
 				use: [
 					"style-loader",
 					{
@@ -48,17 +49,16 @@ module.exports = {
 					},
 					"sass-loader",
 				],
-				exclude: /node_modules/,
 			},
 			{
 				test: /\.svg$/,
-				loader: "svg-inline-loader",
 				exclude: /node_modules/,
+				loader: "svg-inline-loader",
 			},
 			{
 				test: /\.art$/,
-				loader: "art-template-loader",
 				exclude: /node_modules/,
+				loader: "art-template-loader",
 			},
 		],
 	},

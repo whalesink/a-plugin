@@ -1,20 +1,56 @@
 ## Introduction
 
+中文文档 | [English](./docs/README.md)
 `a-plugin`是一个不依赖任何库就可以在你的 web 项目中使用的**原生 js 插件库**。
 旨在帮助那些仍在维护老旧项目，又不想在项目中引入侵入性改动的工程师们快速构建 UI。
 
 ## Install
 
-~~支持按需引入和全量引入~~，
-目前仅支持通过`<script>`标签引入，未来会使用构建工具打包
+支持不同开发环境下的按需引入和全量引入。
 
-#### 按需引入
+<!-- #### 模块化开发环境
 
-通过`<script>`标签引入 `src` 下所需要的 js 插件和`style-all.css` 即可使用；
+1. 安装 a-plugin
 
-#### ~~全量引入~~
+```shell
+npm install a-plugin
+```
 
-~~引入 all.js 和同名 css 文件即可全量引入~~
+2. 在你的项目中引入
+
+```javascript
+// 全量引入
+import * as APlugin from "a-plugin";
+
+// 按需引入
+import { Toast, MessageBox } from "a-plugin";
+``` -->
+
+#### 非模块化开发环境
+
+在非模块化开发环境中，所有组件接口均暴露在全局变量`window`下。
+
+-   全量引入
+
+下载项目中`dist`目录，在你的页面中通过 HTML 标签引入文件`a-plugin.min.js`和`a-plugin.min.css`即可。
+
+-   按需引入
+    你可以`clone`这个仓库，按自己的需要来打包插件
+
+1. 配置打包的插件列表
+   修改`/src/main.js`中导出的组件列表
+
+2. 打包构建
+
+```shell
+# 安装生产环境依赖
+npm install
+
+# 打包构建
+npm run build
+```
+
+之后从`dist`目录导出所需产物即可。
 
 ## Usage
 

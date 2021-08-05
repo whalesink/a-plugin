@@ -4,8 +4,8 @@
 	"description": "native javascript web plug-in lib",
 	"main": "index.js",
 	"scripts": {
-		"dev": "npx webpack --config webpack/dev.config.js",
-		"build": "npx webpack --config webpack/prod.config.js",
+		"dev": "npx webpack --config webpack/dev.config.js --progress",
+		"build": "npx webpack --config webpack/prod.config.js --progress",
 		"re-install": "rm -r node_modules && yarn"
 	},
 	"repository": {
@@ -20,13 +20,14 @@
 	"homepage": "https://github.com/whalesink/a-plugin#readme",
 	"devDependencies": {
 		"@babel/core": "^7.14.8",
-		"@babel/preset-env": "^7.14.9",
+		"@babel/preset-env": "^7.15.0",
 		"art-template": "^4.13.2",
 		"art-template-loader": "^1.4.3",
 		"autoprefixer": "^10.3.1",
 		"babel-loader": "^8.2.2",
 		"css-loader": "^6.2.0",
 		"cssnano": "^5.0.7",
+		"mini-css-extract-plugin": "^2.2.0",
 		"node-sass": "^6.0.1",
 		"postcss-loader": "^6.1.1",
 		"sass-loader": "^12.1.0",
@@ -35,5 +36,7 @@
 		"webpack": "^5.45.1",
 		"webpack-cli": "^4.7.2"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"promise-polyfill": "^8.2.0"
+	}
 }

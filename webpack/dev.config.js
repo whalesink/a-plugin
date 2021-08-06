@@ -1,19 +1,44 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	mode: "development",
+	devtool: "source-map",
 	entry: {
-		lib: "./src/main.js",
+		"a-plugin": "./src/main.js",
+	},
+	devServer: {
+		contentBase: "../dist",
+		hot: true,
+		port: 8088,
+		inline: true,
+		overlay: {
+			warnings: true,
+			errors: true,
+		},
 	},
 	output: {
 		filename: "[name].[hash:4].min.js",
-		path: path.resolve(__dirname, "../temp"),
+		path: path.resolve(__dirname, "../dist"),
+		environment: {
+			arrowFunction: false,
+		},
+		library: {
+			type: "window",
+		},
 		clean: true,
 	},
-
+	resolve: {
+		alias: {
+			"@": path.resolve(__dirname, "../src/"),
+			"@assets": path.resolve(__dirname, "../assets/"),
+		},
+	},
 	module: {
+		strictExportPresence: true,
 		rules: [
 			{
 				test: /\.js$/,
@@ -32,7 +57,7 @@ module.exports = {
 				test: /\.scss$/,
 				exclude: /node_modules/,
 				use: [
-					"style-loader",
+					MiniCssExtractPlugin.loader,
 					{
 						loader: "css-loader",
 						options: {
@@ -62,5 +87,13 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [],
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, "../public/index.html"),
+			scriptLoading: "blocking",
+		}),
+		new MiniCssExtractPlugin({
+			filename: "[name].[hash:4].min.css",
+		}),
+	],
 };

@@ -1,11 +1,10 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	mode: "production",
-	devtool: "source-map",
 	entry: {
 		"a-plugin": "./src/main.js",
 	},
@@ -14,6 +13,8 @@ module.exports = {
 		path: path.resolve(__dirname, "../dist"),
 		environment: {
 			arrowFunction: false,
+			const: false,
+			destructuring: false,
 		},
 		library: {
 			type: "window",
@@ -24,7 +25,6 @@ module.exports = {
 		alias: {
 			"@": path.resolve(__dirname, "../src/"),
 			"@assets": path.resolve(__dirname, "../assets/"),
-			"@common": path.resolve(__dirname, "../src/library/common/"),
 		},
 	},
 	module: {
@@ -36,7 +36,6 @@ module.exports = {
 				use: {
 					loader: "babel-loader",
 					options: {
-						// cacheDirectory: true,
 						presets: ["@babel/preset-env"],
 					},
 				},
@@ -45,7 +44,7 @@ module.exports = {
 				test: /\.scss$/,
 				exclude: /node_modules/,
 				use: [
-					"style-loader",
+					MiniCssExtractPlugin.loader,
 					{
 						loader: "css-loader",
 						options: {
@@ -75,5 +74,9 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [],
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: "[name].min.css",
+		}),
+	],
 };

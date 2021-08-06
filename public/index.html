@@ -5,9 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>demos</title>
-	<link rel="stylesheet" href="./dist/a-plugin.min.css">
-	<script src="./dist/a-plugin.min.js"></script>
+	<title>dev-demos</title>
 	<style>
 		.wrapper {
 			padding: 15px;
@@ -108,10 +106,9 @@
 				toast.title = `${t}秒后加载完成`;
 				if (t <= 0) {
 					clearInterval(timer);
+					// toast.hide()
 				}
 			}, 1000);
-
-			setTimeout(() => toast.hide(), 5000);
 		},
 
 		light() {

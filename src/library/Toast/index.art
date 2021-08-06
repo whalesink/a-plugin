@@ -1,0 +1,14 @@
+<div class="a-toast">
+    <span class="a-toast__iconwrap">
+    {{if !iconClass}}
+        <span class="a-toast__icon">
+            {{icon}}
+        </span>
+    {{else if iconClass}}
+        <span class="a-toast__icon">
+            <i class="{{iconClass}}"></i>
+        </span>
+    {{/if}}
+    </span>
+    <span class="a-toast__inner">{{title}}</span>
+</div>

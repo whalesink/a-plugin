@@ -106,10 +106,9 @@
 				toast.title = `${t}秒后加载完成`;
 				if (t <= 0) {
 					clearInterval(timer);
+					// toast.hide()
 				}
 			}, 1000);
-
-			setTimeout(() => toast.hide(), 5000);
 		},
 
 		light() {

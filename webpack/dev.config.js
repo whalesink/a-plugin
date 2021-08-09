@@ -25,6 +25,10 @@ module.exports = {
 		path: path.resolve(__dirname, "../dist"),
 		environment: {
 			arrowFunction: false,
+			const: false,
+			destructuring: false,
+			dynamicImport: false,
+			module: false,
 		},
 		library: {
 			type: "window",

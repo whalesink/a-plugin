@@ -114,16 +114,20 @@
 	background-color: #fff;
 	border: 1px solid #dcdfe6;
 	color: #4c4e53;
+	&.confirm {
+		background-color: #25c1ff;
+		color: #fff;
+		border: 1px solid #6ad5ff;
+		margin-left: 15px;
+	}
+	&.cancel {
+		background-color: #ff9000;
+		border: 1px solid #ffab3d;
+		color: #fff;
+	}
 }
 
-.a-message-box__btns.confirm {
-	background-color: #25c1ff;
-	color: #fff;
-	border: 1px solid #6ad5ff;
-	margin-left: 15px;
-}
-
-.fadeIn {
+.a-message-box__btns .fadeIn {
 	animation-name: fadeIn;
 	animation-duration: 400ms;
 	animation-fill-mode: forwards;

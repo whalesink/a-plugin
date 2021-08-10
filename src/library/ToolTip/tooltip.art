@@ -1,0 +1,3 @@
+{{each foo}}
+<h2 class="h2"></h2>
+{{/each}}

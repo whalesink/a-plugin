@@ -116,46 +116,6 @@
 				<button class="a-button" id="tooltip2">
 					hover显示
 				</button>
-				<!-- <div class="tooltip">
-					tooltip need a target to triggeredtooltip
-				</div> -->
-				<style>
-					:root {
-						--tip-border-color: #9e9e9e;
-						--tip-bg-color: #fff;
-						--tip-text-color: #888;
-					}
-
-					.tooltip {
-						position: absolute;
-						background-color: var(--tip-bg-color);
-						border-radius: 4px;
-						color: var(--tip-text-color);
-						padding: 5px 10px;
-						font-size: 14px;
-						border: 1px solid var(--tip-border-color);
-						top: calc(316px + 16px);
-						left: calc(23px);
-						box-shadow: 0 0 15px #ddd;
-						width: 200px;
-					}
-
-					.tooltip::after {
-						content: "";
-						position: absolute;
-						width: 8px;
-						height: 8px;
-						top: -5px;
-						left: 20%;
-						background-color: var(--tip-bg-color);
-						border-width: 1px;
-						border-color: transparent;
-						border-style: solid;
-						border-left-color: var(--tip-border-color);
-						border-top-color: var(--tip-border-color);
-						transform: translateX(-50%) rotate(45deg);
-					}
-				</style>
 			</div>
 		</div>
 	</div>
@@ -281,15 +241,25 @@
 		/** 
 		 * tooltipStage
 		*/
+		const content = "For urls that start with a '/', the default behavior is to not translate them. If a htmlResourceRoot query parameter is set, however, it will be prepended to the url";
 		const tooltipStage = {
 			tooltip1() {
 				const myToolTip = new ToolTip({
 					target: document.getElementById("tooltip1"),
-					context: 'For urls that start with a /, the default behavior is to not translate them. If a htmlResourceRoot query parameter is set, however, it will be prepended to the url'
+					content
+				})
+			},
+
+			tooltip2() {
+				const myToolTip = new ToolTip({
+					target: document.getElementById("tooltip2"),
+					content,
+					trigger: "hover"
 				})
 			}
 		}
-		tooltipStage.tooltip1()
+		tooltipStage.tooltip1();
+		tooltipStage.tooltip2();
 
 	</script>
 </body>

@@ -3,11 +3,12 @@ import "./index.scss";
 
 class ToolTip {
 	constructor(args) {
-		if (!args.target) throw new Error("tooltip need a target to triggered");
+		if (!args?.target)
+			throw new Error("tooltip need a target to triggered");
 		this.target = args.target;
-		this.context = args.context ?? temp({});
-		// this.trigger = args.trigger ?? "hover";
-
+		this.content = args.content ?? temp({});
+		this.trigger = args.trigger;
+		this.arrowVisible = args.arrowVisible ?? true;
 		this.init();
 	}
 
@@ -22,28 +23,56 @@ class ToolTip {
 			offsetWidth: this.target.offsetWidth,
 			offsetHeight: this.target.offsetHeight,
 		};
-		el.innerText = this.context;
+		console.table(tarPosition);
+		el.innerText = this.content;
 		el.appendChild(angle);
 		document.body.appendChild(el);
 		this.el = el;
-		console.table(tarPosition);
-		this.trigger();
+		this.setTrigger(this.trigger)();
 	}
 
-	trigger() {
-		this.target.addEventListener(
-			"click",
-			(e) => {
-				this.el.style.display = "block";
-				console.log(this.el);
+	setTrigger(trigger = "click") {
+		const _this = this;
+		const eventMap = {
+			click() {
+				_this.target.addEventListener(
+					"click",
+					_this.show.bind(_this),
+					false
+				);
+				_this.target.addEventListener(
+					"blur",
+					_this.hide.bind(_this),
+					false
+				);
 			},
-			false
-		);
+			hover() {
+				_this.target.addEventListener(
+					"click",
+					_this.show.bind(_this),
+					false
+				);
+			},
+			focus() {},
+			manual() {},
+		};
+
+		return eventMap[trigger];
 	}
 
-	show() {}
+	rander() {
+		const { offsetLeft, offsetTop, offsetWidth, offsetHeight } =
+			this.target;
+	}
 
-	hide() {}
+	show() {
+		this.el.style.display = "block";
+	}
+
+	hide() {
+		this.el.style.display = "none";
+	}
 }
+
 
 export default ToolTip;

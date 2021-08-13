@@ -1,3 +1,1 @@
-{{each foo}}
-<h2 class="h2"></h2>
-{{/each}}
+<h2 class="h2">art template</h2>

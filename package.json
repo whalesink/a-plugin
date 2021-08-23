@@ -1,5 +1,5 @@
 {
-	"name": "a",
+	"name": "a-plugin",
 	"version": "0.0.1",
 	"description": "native javascript web plug-in lib",
 	"main": "index.js",

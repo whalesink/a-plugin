@@ -5,8 +5,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 	mode: "production",
+	devtool: "source-map",
 	entry: {
-		"a-plugin": "./src/main.js",
+		"a-plugin": "./index.js",
 	},
 	output: {
 		filename: "[name].min.js",
@@ -15,6 +16,8 @@ module.exports = {
 			arrowFunction: false,
 			const: false,
 			destructuring: false,
+			dynamicImport: false,
+			module: false,
 		},
 		library: {
 			type: "window",

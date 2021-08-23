@@ -6,9 +6,7 @@
 	left: 0;
 	right: 0;
 	text-align: center;
-	/* z-index: 2000; */
 	background-color: rgba(0, 0, 0, 0.315);
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -114,13 +112,17 @@
 	background-color: #fff;
 	border: 1px solid #dcdfe6;
 	color: #4c4e53;
-}
-
-.a-message-box__btns.confirm {
-	background-color: #25c1ff;
-	color: #fff;
-	border: 1px solid #6ad5ff;
-	margin-left: 15px;
+	&.confirm {
+		background-color: #25c1ff;
+		color: #fff;
+		border: 1px solid #6ad5ff;
+		margin-left: 15px;
+	}
+	&.cancel {
+		background-color: #ff9000;
+		border: 1px solid #ffab3d;
+		color: #fff;
+	}
 }
 
 .fadeIn {

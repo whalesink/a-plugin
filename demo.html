@@ -82,125 +82,125 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		const toastStage = {
+			plain() {
+				let toast = Toast.show("我是一个朴实无华且枯燥的toast");
+				// Toast.loading("socket连接已断开，正在重连...")
+			},
+
+			success() {
+				Toast.success("表单提交成功！", {
+					theme: "light",
+				});
+			},
+
+			asyncClose() {
+				let t = 5;
+				let toast = new Toast({
+					title: "我5秒后加载完成(假装)",
+					type: "loading",
+				});
+
+				let timer = setInterval(() => {
+					t--;
+					toast.title = `${t}秒后加载完成`;
+					if (t <= 0) {
+						clearInterval(timer);
+					}
+				}, 1000);
+
+				setTimeout(() => toast.hide(), 5000);
+			},
+
+			light() {
+				let toast = new Toast({
+					type: "success",
+					title: "我是亮色主题的toast",
+					theme: "light",
+				});
+			},
+
+			excute() {
+				let toast = new Toast({
+					title: "我关闭后会执行回调函数哟",
+					onHide: () => {
+						alert("我要被从dom移除啦");
+					},
+				});
+			},
+
+			randerHTML() {
+				let toast = new Toast({
+					title: `<button class="a-button" onclick="toastStage.showMsgbox()">
+							  我是一枚按钮，我在toast组件内部
+						  </button>`,
+					dangerouslyUseHTML: true,
+					theme: "dark",
+				});
+			},
+		};
+
+		const msgBoxStage = {
+			plainBox() {
+				new MessageBox({
+					message: "我是一个消息提示框",
+				});
+			},
+
+			warn() {
+				MessageBox.warn("删除数据后不可恢复，确定吗？");
+			},
+
+			callback() {
+				let mb = new MessageBox({
+					message: "点击按钮试试看",
+					confirmBtnText: "好嘞 👌",
+					cancelBtnText: "v(ノ｀Д)ノ",
+					onConfirm() {
+						Toast.show("点击了确认");
+						mb.close();
+					},
+					onCancel() {
+						Toast.show("点击了取消");
+						mb.close();
+					},
+				});
+			},
+
+			excute() {
+				let mb = new MessageBox({
+					type: "error",
+					title: "操作未被允许",
+					message: "三秒后我会被异步关闭",
+				});
+
+				setTimeout(() => {
+					mb && mb.close();
+				}, 3000);
+			},
+
+			html() {
+				let mb = new MessageBox({
+					message: `<input type="text" placeholder="我一个输入框 打字本领强✨">`,
+					dangerouslyUseHTML: true,
+				});
+			},
+
+			banEsc() {
+				let mb = new MessageBox({
+					type: "success",
+					title: "借点钱，秋梨膏！",
+					message: `嘿。我禁用了Esc/右上角x/Mask关闭, 并抠掉了你的拒绝按钮。`,
+					showClose: false,
+					closeOnPressEscape: false,
+					closeOnClickMask: false,
+					showCancelBtn: false,
+					confirmBtnText: "👌 好的说",
+				});
+			},
+		};
+	</script>
 </body>
-<script>
-	const toastStage = {
-		plain() {
-			let toast = Toast.show("我是一个朴实无华且枯燥的toast");
-			// Toast.loading("socket连接已断开，正在重连...")
-		},
-
-		success() {
-			Toast.success("表单提交成功！", {
-				theme: "light",
-			});
-		},
-
-		asyncClose() {
-			let t = 5;
-			let toast = new Toast({
-				title: "我5秒后加载完成(假装)",
-				type: "loading",
-			});
-
-			let timer = setInterval(() => {
-				t--;
-				toast.title = `${t}秒后加载完成`;
-				if (t <= 0) {
-					clearInterval(timer);
-				}
-			}, 1000);
-
-			setTimeout(() => toast.hide(), 5000);
-		},
-
-		light() {
-			let toast = new Toast({
-				type: "success",
-				title: "我是亮色主题的toast",
-				theme: "light",
-			});
-		},
-
-		excute() {
-			let toast = new Toast({
-				title: "我关闭后会执行回调函数哟",
-				onHide: () => {
-					alert("我要被从dom移除啦");
-				},
-			});
-		},
-
-		randerHTML() {
-			let toast = new Toast({
-				title: `<button class="a-button" onclick="toastStage.showMsgbox()">
-		                  我是一枚按钮，我在toast组件内部
-		              </button>`,
-				dangerouslyUseHTML: true,
-				theme: "dark",
-			});
-		},
-	};
-
-	const msgBoxStage = {
-		plainBox() {
-			new MessageBox({
-				message: "我是一个消息提示框",
-			});
-		},
-
-		warn() {
-			MessageBox.warn("删除数据后不可恢复，确定吗？");
-		},
-
-		callback() {
-			let mb = new MessageBox({
-				message: "点击按钮试试看",
-				confirmBtnText: "好嘞 👌",
-				cancelBtnText: "v(ノ｀Д)ノ",
-				onConfirm() {
-					Toast.show("点击了确认");
-					mb.close();
-				},
-				onCancel() {
-					Toast.show("点击了取消");
-					mb.close();
-				},
-			});
-		},
-
-		excute() {
-			let mb = new MessageBox({
-				type: "error",
-				title: "操作未被允许",
-				message: "三秒后我会被异步关闭",
-			});
-
-			setTimeout(() => {
-				mb && mb.close();
-			}, 3000);
-		},
-
-		html() {
-			let mb = new MessageBox({
-				message: `<input type="text" placeholder="我一个输入框 打字本领强✨">`,
-				dangerouslyUseHTML: true,
-			});
-		},
-
-		banEsc() {
-			let mb = new MessageBox({
-				type: "success",
-				title: "借点钱，秋梨膏！",
-				message: `嘿。我禁用了Esc/右上角x/Mask关闭, 并抠掉了你的拒绝按钮。`,
-				showClose: false,
-				closeOnPressEscape: false,
-				closeOnClickMask: false,
-				showCancelBtn: false,
-				confirmBtnText: "👌 好的说",
-			});
-		},
-	};
-</script>
 
 </html>

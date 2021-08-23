@@ -1,3 +1,0 @@
-{{if user}}
-  <h2 class="h2">{{user.name}}</h2>
-{{/if}}

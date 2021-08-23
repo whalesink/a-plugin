@@ -1,0 +1,33 @@
+$tip-border-color: #cecece;
+$tip-bg-color: #fff;
+$tip-text-color: #888;
+
+.a-tooltip {
+	position: absolute;
+	background-color: $tip-bg-color;
+	border-radius: 4px;
+	color: $tip-text-color;
+	padding: 5px 10px;
+	font-size: 14px;
+	border: 1px solid $tip-border-color;
+	top: calc(316px + 16px);
+	left: calc(23px);
+	box-shadow: 0 2px 15px #ddd;
+	width: 200px;
+	display: none;
+
+	.a-tooltip__angle {
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		top: -5px;
+		left: 20%;
+		background-color: $tip-bg-color;
+		border-width: 1px;
+		border-color: transparent;
+		border-style: solid;
+		border-left-color: $tip-border-color;
+		border-top-color: $tip-border-color;
+		transform: translateX(-50%) rotate(45deg);
+	}
+}

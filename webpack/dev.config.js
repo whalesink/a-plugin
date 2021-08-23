@@ -7,9 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
 	mode: "development",
 	devtool: "source-map",
-	entry: {
-		"a-plugin": "./src/main.js",
-	},
+	entry: "./index.js",
 	devServer: {
 		contentBase: "../dist",
 		hot: true,
@@ -23,11 +21,6 @@ module.exports = {
 	output: {
 		filename: "[name].[hash:4].min.js",
 		path: path.resolve(__dirname, "../dist"),
-		environment: {
-			arrowFunction: false,
-			const: false,
-			destructuring: false,
-		},
 		library: {
 			type: "window",
 		},
@@ -93,6 +86,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, "../public/index.html"),
 			scriptLoading: "blocking",
+			inject: "head",
 		}),
 		new MiniCssExtractPlugin({
 			filename: "[name].[hash:4].min.css",

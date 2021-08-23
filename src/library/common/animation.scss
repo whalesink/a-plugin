@@ -1,0 +1,58 @@
+.fadeIn {
+	animation-name: fadeIn;
+	animation-duration: 400ms;
+	animation-fill-mode: forwards;
+}
+.fadeOut {
+	animation-name: fadeOut;
+	animation-duration: 400ms;
+	animation-fill-mode: forwards;
+}
+
+.scaleIn {
+	animation-name: scaleIn;
+	animation-duration: 400ms;
+	animation-fill-mode: forwards;
+}
+
+.scaleOut {
+	animation-name: scaleOut;
+	animation-duration: 400ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		transform: scale(1.6);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes scaleOut {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.2);
+	}
+}

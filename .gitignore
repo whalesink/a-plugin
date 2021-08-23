@@ -3,3 +3,4 @@ temp
 .vscode
 *.log
 .idea
+*.lock

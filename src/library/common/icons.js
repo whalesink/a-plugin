@@ -5,7 +5,7 @@ import exclamationCircle from "@assets/svg/exclamation-circle.svg";
 import infoCircle from "@assets/svg/info-circle.svg";
 import timesCircle from "@assets/svg/times-circle.svg";
 
-const Icon = {
+export {
 	loading,
 	times,
 	checkCircle,
@@ -13,5 +13,3 @@ const Icon = {
 	infoCircle,
 	timesCircle,
 };
-
-export default Icon;

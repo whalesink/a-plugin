@@ -23,7 +23,7 @@ class ToolTip {
 			offsetWidth: this.target.offsetWidth,
 			offsetHeight: this.target.offsetHeight,
 		};
-		console.table(tarPosition);
+		// console.table(tarPosition);
 		el.innerText = this.content;
 		el.appendChild(angle);
 		document.body.appendChild(el);

@@ -1,6 +1,6 @@
 ## Introduction
 
-中文文档 | [English](./docs/README.md)
+中文文档 | [English](./docs/readme_en.md)
 
 `a-plugin`是一个不依赖任何库就可以在你的 web 项目中使用的**原生 js 插件库**。
 旨在帮助那些仍在维护老旧项目，又不想在项目中引入侵入性改动的工程师们快速构建 UI。
@@ -166,3 +166,5 @@ MessageBox.warn("删除数据后不可恢复，确定吗？", {
     方法| 参数及类型| 描述|返回值及类型
     --|--|--|--
     `close`| `void`| 手动关闭（销毁） MessageBox | `void`
+
+### ToolTip 提示框

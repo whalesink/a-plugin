@@ -7,6 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>dev-demos</title>
 	<style>
+		body{
+			height: 120vh;
+		}
 		.wrapper {
 			padding: 15px;
 		}
@@ -111,10 +114,10 @@
 			<div class="title">tooltip 插件展示</div>
 			<div class="stage">
 				<button class="a-button" id="tooltip1">
-					click显示
+					bottom
 				</button>
 				<button class="a-button" id="tooltip2">
-					hover显示
+					top
 				</button>
 			</div>
 		</div>
@@ -254,7 +257,8 @@
 				const myToolTip = new ToolTip({
 					target: document.getElementById("tooltip2"),
 					content,
-					trigger: "hover"
+					placement: "top"
+					// trigger: "hover"
 				})
 			}
 		}

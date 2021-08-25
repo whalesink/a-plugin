@@ -111,10 +111,9 @@ class Toast {
 	}
 
 	set title(val) {
+		this._title = val;
 		if (this.el) {
 			this.el.querySelector(".a-toast__inner").innerText = val;
-		} else {
-			this._title = val;
 		}
 	}
 

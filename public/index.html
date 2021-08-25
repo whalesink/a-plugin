@@ -7,9 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>dev-demos</title>
 	<style>
-		body{
+		body {
 			height: 120vh;
 		}
+
 		.wrapper {
 			padding: 15px;
 		}
@@ -21,6 +22,20 @@
 
 		.stage {
 			margin-bottom: 10px;
+		}
+
+		#tooltip-content1 {
+			overflow: auto;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 300px;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
 		}
 
 		/* button */
@@ -83,7 +98,22 @@
 				</button>
 			</div>
 		</div>
-
+		<div id="tooltip-content1">
+			<table>
+				<tr>
+					<th>姓名</th>
+					<th>学号</th>
+				</tr>
+				<tr>
+					<td>阿三</td>
+					<td>347689634768963476896</td>
+				</tr>
+				<tr>
+					<td>阿三</td>
+					<td>3476896</td>
+				</tr>
+			</table>
+		</div>
 		<!-- messagebox 部分 -->
 		<div class="wrapper">
 			<div class="title">Messagebox 插件展示</div>
@@ -119,8 +149,16 @@
 				<button class="a-button" id="tooltip2">
 					top
 				</button>
+				<button class="a-button" id="tooltip3">
+					left
+				</button>
+				<button class="a-button" id="tooltip4">
+					right
+				</button>
 			</div>
 		</div>
+
+
 	</div>
 	<script>
 		const toastStage = {
@@ -256,14 +294,32 @@
 			tooltip2() {
 				const myToolTip = new ToolTip({
 					target: document.getElementById("tooltip2"),
-					content,
+					content: document.getElementById("tooltip-content1"),
 					placement: "top"
-					// trigger: "hover"
+				})
+			},
+
+			tooltip3() {
+				const myToolTip = new ToolTip({
+					target: document.getElementById("tooltip3"),
+					content,
+					placement: "left"
+				})
+			},
+
+			tooltip4() {
+				const myToolTip = new ToolTip({
+					target: document.getElementById("tooltip4"),
+					content,
+					placement: "right"
 				})
 			}
 		}
-		tooltipStage.tooltip1();
 		tooltipStage.tooltip2();
+		tooltipStage.tooltip1();
+		tooltipStage.tooltip3();
+		tooltipStage.tooltip4();
+
 
 	</script>
 </body>

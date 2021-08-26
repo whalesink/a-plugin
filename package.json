@@ -6,7 +6,6 @@
 	"scripts": {
 		"dev": "npx webpack serve --config webpack/dev.config.js --open --progress",
 		"build": "npx webpack --config webpack/prod.config.js --progress",
-		"re-install": "rm -r node_modules && yarn"
 	},
 	"repository": {
 		"type": "git",

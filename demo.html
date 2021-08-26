@@ -5,10 +5,14 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>demos</title>
+	<title>dev-demos</title>
 	<link rel="stylesheet" href="./dist/a-plugin.min.css">
 	<script src="./dist/a-plugin.min.js"></script>
 	<style>
+		body {
+			height: 120vh;
+		}
+
 		.wrapper {
 			padding: 15px;
 		}
@@ -20,6 +24,47 @@
 
 		.stage {
 			margin-bottom: 10px;
+		}
+
+		#tooltip-content1 {
+			overflow: auto;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 300px;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+		}
+
+		/* button */
+		.a-button {
+			display: inline-block;
+			line-height: 1;
+			white-space: nowrap;
+			cursor: pointer;
+			background: #fff;
+			border: 1px solid #dcdfe6;
+			color: #4c4e53;
+			-webkit-appearance: none;
+			text-align: center;
+			box-sizing: border-box;
+			outline: none;
+			margin: 0;
+			transition: 0.1s;
+			font-weight: 500;
+			user-select: none;
+			padding: 10px 15px;
+			font-size: 14px;
+			border-radius: 2px;
+		}
+
+		.a-button:hover {
+			background-color: #a0a0a0;
+			color: #fff;
 		}
 	</style>
 </head>
@@ -55,7 +100,22 @@
 				</button>
 			</div>
 		</div>
-
+		<div id="tooltip-content1">
+			<table>
+				<tr>
+					<th>姓名</th>
+					<th>学号</th>
+				</tr>
+				<tr>
+					<td>阿三</td>
+					<td>347689634768963476896</td>
+				</tr>
+				<tr>
+					<td>阿三</td>
+					<td>3476896</td>
+				</tr>
+			</table>
+		</div>
 		<!-- messagebox 部分 -->
 		<div class="wrapper">
 			<div class="title">Messagebox 插件展示</div>
@@ -81,6 +141,26 @@
 				</button>
 			</div>
 		</div>
+
+		<div class="wrapper">
+			<div class="title">tooltip 插件展示</div>
+			<div class="stage">
+				<button class="a-button" id="tooltip1">
+					bottom
+				</button>
+				<button class="a-button" id="tooltip2">
+					top
+				</button>
+				<button class="a-button" id="tooltip3">
+					left
+				</button>
+				<button class="a-button" id="tooltip4">
+					right
+				</button>
+			</div>
+		</div>
+
+
 	</div>
 	<script>
 		const toastStage = {
@@ -200,6 +280,49 @@
 				});
 			},
 		};
+
+		/** 
+		 * tooltipStage
+		*/
+		const content = "For urls that start with a '/', the default behavior is to not translate them. If a htmlResourceRoot query parameter is set, however, it will be prepended to the url";
+		const tooltipStage = {
+			tooltip1() {
+				const myToolTip = new ToolTip({
+					target: document.getElementById("tooltip1"),
+					content
+				})
+			},
+
+			tooltip2() {
+				const myToolTip = new ToolTip({
+					target: document.getElementById("tooltip2"),
+					content: document.getElementById("tooltip-content1"),
+					placement: "top"
+				})
+			},
+
+			tooltip3() {
+				const myToolTip = new ToolTip({
+					target: document.getElementById("tooltip3"),
+					content,
+					placement: "left"
+				})
+			},
+
+			tooltip4() {
+				const myToolTip = new ToolTip({
+					target: document.getElementById("tooltip4"),
+					content,
+					placement: "right"
+				})
+			}
+		}
+		tooltipStage.tooltip2();
+		tooltipStage.tooltip1();
+		tooltipStage.tooltip3();
+		tooltipStage.tooltip4();
+
+
 	</script>
 </body>
 

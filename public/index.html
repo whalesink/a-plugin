@@ -98,21 +98,23 @@
 				</button>
 			</div>
 		</div>
-		<div id="tooltip-content1">
-			<table>
-				<tr>
-					<th>姓名</th>
-					<th>学号</th>
-				</tr>
-				<tr>
-					<td>阿三</td>
-					<td>347689634768963476896</td>
-				</tr>
-				<tr>
-					<td>阿三</td>
-					<td>3476896</td>
-				</tr>
-			</table>
+		<div style="display: none;">
+			<div id="tooltip-content1">
+				<table>
+					<tr>
+						<th>姓名</th>
+						<th>学号</th>
+					</tr>
+					<tr>
+						<td>阿三</td>
+						<td>347689634768963476896</td>
+					</tr>
+					<tr>
+						<td>阿三</td>
+						<td>3476896</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<!-- messagebox 部分 -->
 		<div class="wrapper">
@@ -287,7 +289,8 @@
 			tooltip1() {
 				const myToolTip = new ToolTip({
 					target: document.getElementById("tooltip1"),
-					content
+					content,
+					trigger: "hover"
 				})
 			},
 

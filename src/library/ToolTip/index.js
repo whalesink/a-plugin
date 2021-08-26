@@ -5,7 +5,7 @@ import "./index.scss";
  * @param {String|HTMLElement} content: tooltip内容; 如果是元素实体，则该元素必须是display:none的
  * @param {Boolean} arrowVisible: 是否显示提示框气泡的尖角
  * @param {String} trigger: 触发方式(click, hover, focus, manual)。默认click
- * @param {Number} width: content宽度
+ * @param {Number} width: tooltip宽度
  * @param {String} placement: 与靶向元素的相对位置(top, bottom, left, right)。默认bottom
  */
 class ToolTip {
@@ -15,6 +15,7 @@ class ToolTip {
 		this.target = args.target;
 		this.content = args.content;
 		this.trigger = args.trigger;
+		this.width = args.width ?? 200;
 		this.arrowVisible = args.arrowVisible ?? true;
 		this.placement = args.placement ?? "bottom";
 		this.rander();
@@ -34,6 +35,7 @@ class ToolTip {
 		const angle = document.createElement("div");
 		el.setAttribute("class", "a-tooltip");
 		el.setAttribute("tabindex", "-1");
+		this.target.setAttribute("tabindex", "0");
 		angle.setAttribute("class", "a-tooltip__angle");
 		if (this._isHTMLElement(this.content)) {
 			el.append(this.content);
@@ -45,6 +47,12 @@ class ToolTip {
 		const { style, angleStyle } = this.getStyle();
 		el.style.cssText = style;
 		angle.style.cssText = angleStyle;
+		
+		window.addEventListener("resize", () => {
+			const { style, angleStyle } = this.getStyle();
+			el.style.cssText = style;
+			angle.style.cssText = angleStyle;
+		});
 
 		this.el = el;
 		document.body.appendChild(el);
@@ -64,6 +72,9 @@ class ToolTip {
 		const theme = this.getTheme();
 		const placement = this.placement;
 		const rect = this.target.getBoundingClientRect();
+
+		const customStyle = `width: ${this.width}px;`;
+		// const
 		// console.table(rect);
 		const angleDirMap = {
 			top: `
@@ -124,7 +135,7 @@ class ToolTip {
 		};
 
 		return {
-			style: dirMap[placement],
+			style: dirMap[placement] + customStyle,
 			angleStyle: angleDirMap[placement],
 		};
 	}
@@ -140,17 +151,17 @@ class ToolTip {
 					},
 					false
 				);
-				_this.el.addEventListener(
-					"blur",
-					() => {
-						_this.show = false;
-					},
-					false
-				);
 				_this.target.addEventListener(
 					"blur",
 					() => {
 						if (!_this.focus) _this.show = false;
+					},
+					false
+				);
+				_this.el.addEventListener(
+					"blur",
+					() => {
+						_this.show = false;
 					},
 					false
 				);
@@ -169,7 +180,41 @@ class ToolTip {
 					false
 				);
 			},
-			hover() {},
+			hover() {
+				_this.target.addEventListener(
+					"mouseenter",
+					() => {
+						_this.show = true;
+					},
+					false
+				);
+				_this.target.addEventListener(
+					"mouseleave",
+					() => {
+						setTimeout(() => {
+							if (!_this.focus) {
+								_this.show = false;
+							}
+						}, 300);
+					},
+					false
+				);
+				_this.el.addEventListener(
+					"mouseenter",
+					() => {
+						_this.focus = true;
+					},
+					false
+				);
+				_this.el.addEventListener(
+					"mouseleave",
+					() => {
+						_this.focus = false;
+						_this.show = false;
+					},
+					false
+				);
+			},
 			focus() {},
 			manual() {},
 		};

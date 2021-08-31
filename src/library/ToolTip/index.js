@@ -47,7 +47,7 @@ class ToolTip {
 		const { style, angleStyle } = this.getStyle();
 		el.style.cssText = style;
 		angle.style.cssText = angleStyle;
-		
+
 		window.addEventListener("resize", () => {
 			const { style, angleStyle } = this.getStyle();
 			el.style.cssText = style;

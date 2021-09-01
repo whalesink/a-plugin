@@ -8,7 +8,7 @@ import "./index.scss";
  * @param {Number} width: tooltip宽度
  * @param {String} placement: 与靶向元素的相对位置(top, bottom, left, right)。默认bottom
  */
-class ToolTip {
+class Tooltip {
 	constructor(args) {
 		if (!args?.target)
 			throw new Error("tooltip need a target to triggered.");
@@ -74,7 +74,6 @@ class ToolTip {
 		const rect = this.target.getBoundingClientRect();
 
 		const customStyle = `width: ${this.width}px;`;
-		// const
 		// console.table(rect);
 		const angleDirMap = {
 			top: `
@@ -241,4 +240,4 @@ class ToolTip {
 	}
 }
 
-export default ToolTip;
+export default Tooltip;

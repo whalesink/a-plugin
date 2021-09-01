@@ -287,14 +287,14 @@
 		const content = "For urls that start with a '/', the default behavior is to not translate them. If a htmlResourceRoot query parameter is set, however, it will be prepended to the url";
 		const tooltipStage = {
 			tooltip1() {
-				const myToolTip = new ToolTip({
+				const myTooltip = new Tooltip({
 					target: document.getElementById("tooltip1"),
 					content
 				})
 			},
 
 			tooltip2() {
-				const myToolTip = new ToolTip({
+				const myTooltip = new Tooltip({
 					target: document.getElementById("tooltip2"),
 					content: document.getElementById("tooltip-content1"),
 					placement: "top"
@@ -302,7 +302,7 @@
 			},
 
 			tooltip3() {
-				const myToolTip = new ToolTip({
+				const myTooltip = new Tooltip({
 					target: document.getElementById("tooltip3"),
 					content,
 					placement: "left"
@@ -310,7 +310,7 @@
 			},
 
 			tooltip4() {
-				const myToolTip = new ToolTip({
+				const myTooltip = new Tooltip({
 					target: document.getElementById("tooltip4"),
 					content,
 					placement: "right"

@@ -79,7 +79,7 @@ class Toast {
 		this.el.classList.remove("fadeMoveIn");
 		this.el.classList.add("fadeMoveOut");
 		this.el.addEventListener("animationend", () => {
-			this.onHide && this.onHide();
+			this.onHide?.();
 			this.el.remove();
 		});
 	}

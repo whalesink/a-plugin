@@ -138,7 +138,7 @@ class Toast {
 	}
 
 	static loading(title, args) {
-		return new this({ title, type: "loading", ...args });
+		return new this({ title, type: "loading", ...args, duration: 0 });
 	}
 }
 
